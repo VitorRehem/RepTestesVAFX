@@ -14,7 +14,23 @@ public abstract class Pokesal {
     private int spd;
     private TipoElemental tipo;
 
-    // Construtor, Getters e Setters devem ser gerados aqui
+    // Construtor obrigatório para inicializar os atributos
+    public Pokesal(String nome, int hp, int atk, int def, int spd, TipoElemental tipo) {
+        this.nome = nome;
+        this.hp = hp;
+        this.hpMaximo = hp;
+        this.atk = atk;
+        this.def = def;
+        this.spd = spd;
+        this.tipo = tipo;
+    }
+
+    // Getters para permitir que outras classes leiam os valores
+    public int getHp() { return this.hp; }
+    public int getAtk() { return this.atk; }
+    public int getDef() { return this.def; }
+    public int getSpd() { return this.spd; }
+    public TipoElemental getTipo() { return this.tipo; }
 
     /**
      * Calcula e aplica o dano ao oponente baseado nos atributos base e vantagens elementais.
@@ -46,4 +62,4 @@ public abstract class Pokesal {
             this.hp = 0;
         }
     }
-} 
+}
