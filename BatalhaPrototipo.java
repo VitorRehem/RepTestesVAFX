@@ -24,7 +24,7 @@ public class BatalhaPrototipo {
             System.out.println("SUCESSO: O dano aplicou o multiplicador x2.0 corretamente.");
         } else {
             System.out.println("ERRO: O dano falhou. HP atual é " + bulbaSal.getHp() + 
-                               " mas deveria ser " + hpEsperado);
+                               " mas deveria ser " + hpEsperado); 
         }
 
         // 3. TESTE DE INICIATIVA (Velocidade)

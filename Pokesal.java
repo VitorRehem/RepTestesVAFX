@@ -1,18 +1,15 @@
-/**
- * Representa a entidade base de todos os monstros do simulador PokeSal.
- */
-public abstract class Pokesal {
-    
-    // Evitando "Magic Numbers" nas lógicas de batalha
-    private static final double FATOR_DEFESA = 0.5;
+    // Representação de identidades
 
     private String nome;
     private int hp;
-    private int hpMaximo;
     private int atk;
     private int def;
-    private int spd;
+    private int speed;
     private TipoElemental tipo;
+    private EfeitoStatus statusAtual = EfeitoStatus.NENHUM;
+    private int turnosEnvenenado = 0;
+
+
 
     // Construtor obrigatório para inicializar os atributos
     public Pokesal(String nome, int hp, int atk, int def, int spd, TipoElemental tipo) {
