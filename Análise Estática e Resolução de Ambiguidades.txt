@@ -39,4 +39,4 @@ A mochila possui inventário "infinito" de itens; porém, há uma trava de segur
 Problema: 
 O texto não deixava claro quem era o oponente da batalha.
 Decisão da Equipe:
-A aplicação será implementada no modo PvE (jogador contra máquina), no qual o jogador batalhará contra um oponente controlado pelo próprio sistema.
+A aplicação será implementada no modo PvP, jogador contra jogador, jogado no mesmo teclado
