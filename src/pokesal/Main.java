@@ -20,13 +20,15 @@ public class Main {
         System.out.println("       Bem-vindo ao PokeSal - PvP");
         System.out.println("========================================\n");
 
-        // Criacao dos Pokesal
-        SquirSal squirt = new SquirSal("SquirtSal", 100, 30, 20, 40, TipoElemental.AGUA);
-        CharSal charmander = new CharSal("CharmanderSal", 100, 32, 15, 45, TipoElemental.FOGO);
+        // Criacao dos Pokesal via Selecao Inicial (Regra de Negocio 1)
+        System.out.println("--- JOGADOR 1 ---");
+        Pokesal pokesalJ1 = SelecaoInicial.selecionarViaTeclado(scanner);
+        System.out.println("\n--- JOGADOR 2 ---");
+        Pokesal pokesalJ2 = SelecaoInicial.selecionarViaTeclado(scanner);
 
         // Criacao dos treinadores
-        Treinador jogador1 = new Treinador("Jogador 1", Arrays.asList(squirt));
-        Treinador jogador2 = new Treinador("Jogador 2", Arrays.asList(charmander));
+        Treinador jogador1 = new Treinador("Jogador 1", Arrays.asList(pokesalJ1));
+        Treinador jogador2 = new Treinador("Jogador 2", Arrays.asList(pokesalJ2));
 
         // Itens iniciais de cada jogador
         jogador1.adicionarItem(new Potion());
@@ -37,16 +39,16 @@ public class Main {
         // Iniciar a batalha
         Batalha batalha = new Batalha(jogador1, jogador2, Terreno.POCA_DE_CHUVA);
 
-        System.out.println(jogador1.getNome() + " escolheu: " + squirt.getNome());
-        System.out.println(jogador2.getNome() + " escolheu: " + charmander.getNome());
+        System.out.println(jogador1.getNome() + " escolheu: " + pokesalJ1.getNome());
+        System.out.println(jogador2.getNome() + " escolheu: " + pokesalJ2.getNome());
         System.out.println("Terreno: Poca de Chuva\n");
 
         // Loop principal da batalha
         int turno = 1;
-        while (squirt.estaVivo() && charmander.estaVivo() && !batalha.isBatalhaEncerrada()) {
+        while (pokesalJ1.estaVivo() && pokesalJ2.estaVivo() && !batalha.isBatalhaEncerrada()) {
             System.out.println("\n============ Turno " + turno + " ============");
-            System.out.println(squirt);
-            System.out.println(charmander);
+            System.out.println(pokesalJ1);
+            System.out.println(pokesalJ2);
 
             Batalha.Acao acao1 = escolherAcao(jogador1);
             Batalha.Acao acao2 = escolherAcao(jogador2);
@@ -59,14 +61,14 @@ public class Main {
         System.out.println("\n========================================");
         System.out.println("            FIM DE BATALHA");
         System.out.println("========================================");
-        System.out.println(squirt);
-        System.out.println(charmander);
+        System.out.println(pokesalJ1);
+        System.out.println(pokesalJ2);
 
         if (batalha.isBatalhaEncerrada()) {
             System.out.println("A batalha foi encerrada por fuga!");
-        } else if (!squirt.estaVivo()) {
+        } else if (!pokesalJ1.estaVivo()) {
             System.out.println(jogador2.getNome() + " venceu a batalha!");
-        } else if (!charmander.estaVivo()) {
+        } else if (!pokesalJ2.estaVivo()) {
             System.out.println(jogador1.getNome() + " venceu a batalha!");
         }
 
