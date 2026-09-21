@@ -36,12 +36,16 @@ public class Main {
         jogador2.adicionarItem(new Potion());
         jogador2.adicionarItem(new SuperPotion());
 
+        // Selecao aleatoria de Terreno (Regra de Negocio 3)
+        Terreno[] terrenos = Terreno.values();
+        Terreno terrenoAleatorio = terrenos[(int) (Math.random() * terrenos.length)];
+
         // Iniciar a batalha
-        Batalha batalha = new Batalha(jogador1, jogador2, Terreno.POCA_DE_CHUVA);
+        Batalha batalha = new Batalha(jogador1, jogador2, terrenoAleatorio);
 
         System.out.println(jogador1.getNome() + " escolheu: " + pokesalJ1.getNome());
         System.out.println(jogador2.getNome() + " escolheu: " + pokesalJ2.getNome());
-        System.out.println("Terreno: Poca de Chuva\n");
+        System.out.println("Terreno sorteado: " + terrenoAleatorio + "\n");
 
         // Loop principal da batalha
         int turno = 1;
