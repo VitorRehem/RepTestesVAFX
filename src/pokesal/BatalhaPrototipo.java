@@ -1,3 +1,5 @@
+package pokesal;
+
 public class BatalhaPrototipo {
 
     public static void main(String[] args) {
@@ -12,8 +14,12 @@ public class BatalhaPrototipo {
         System.out.println("--- Teste: Vantagem Elemental (Fogo x Planta) ---");
         int hpInicialBulba = bulbaSal.getHp();
         
-        // Executa o ataque
-        charSal.atacar(bulbaSal);
+        // Executa o ataque manualmente (fórmula da classe Batalha)
+        double danoBase = charSal.getAtk() - (bulbaSal.getDef() * 0.5);
+        double multiplicador = charSal.getTipo().calcularVantagem(bulbaSal.getTipo());
+        int danoAplicado = (int) Math.round(danoBase * multiplicador);
+        if (danoAplicado < 0) danoAplicado = 0;
+        bulbaSal.receberDano(danoAplicado);
         
         // Calcula matematicamente o que deveria acontecer
         int danoEsperado = (int) ((charSal.getAtk() - (bulbaSal.getDef() * 0.5)) * 2.0);
