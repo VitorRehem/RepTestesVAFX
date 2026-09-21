@@ -1,0 +1,10 @@
+
+
+**Histórico de Prompts Utilizados:**
+Faça a Correção ortográfica da documentação de texto.
+(Um prompt que fiz no Gemini, para corrigir a "Análise estática dos resquisitos")
+(E o uso do mesmo prompt para a correção do "AI_DECLARATION")
+
+Faça Identificação de erros sintáticos apontados pelo compilador.
+
+
