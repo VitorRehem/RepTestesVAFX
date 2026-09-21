@@ -1,0 +1,20 @@
+Requisito Autoral 1: Tentativa de Fuga
+
+Função: Permite ao jogador tentar encerrar a batalha PvE antecipadamente, consumindo o seu turno.
+
+Lógica para o código: O sistema compara o atributo SPD do Pokésal do jogador com o SPD do inimigo.
+Se o jogador for mais rápido, a fuga tem sucesso garantido e a batalha encerra. Se for mais lento, o sistema faz um sorteio com uma chance percentual baixa (ex: 30%) de escapar.
+Se a fuga falhar, o turno passa para o inimigo atacar.
+
+Requisito Autoral 2: Esquiva (Dodge)
+
+Função: Dá a chance de um Pokésal desviar de um golpe, anulando completamente o dano recebido.
+
+Lógica para o código: Dentro do método atacar() ou receberDano(), antes de descontar o HP, o sistema gera um número aleatório. 
+Todo Pokésal pode ter uma chance base fixa (ex: 10% de probabilidade) de se esquivar. Se a esquiva for ativada, o dano do turno é anulado (cai para 0) e o terminal exibe a mensagem informando que o golpe falhou.
+
+Requisito Autoral 3: Acerto Crítico (Critical Hit)
+
+Função: Chance de um golpe acertar um ponto fraco por pura sorte, multiplicando o dano que seria causado.
+
+Lógica para o código: Durante o cálculo matemático no método atacar(), o sistema roda um sorteio percentual (ex: 10% a 15% de chance). Se o acerto crítico ativar, o valor do dano bruto do atacante ganha um multiplicador extra (ex: x1.5 ou x2.0) antes de ser subtraído do HP do oponente.

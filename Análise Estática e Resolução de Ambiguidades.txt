@@ -1,0 +1,42 @@
+Definições da Análise Estática e Resolução de Ambiguidades
+
+1. Efeito do Terreno (Poça de Chuva)
+
+Problema: A regra cita 10% adicionais de precisão "ou" dano para o tipo Água.
+Decisão da Equipe: A escolha entre buff de precisão ou de dano será aleatória, decidida automaticamente pelo sistema no momento do ataque (50%).
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+2. Empate de Velocidade (SPD)
+
+Problema: A iniciativa é definida estritamente pelo atributo SPD, mas o documento não especifica o desempate.
+Decisão da Equipe: Em caso de SPD igual, a ordem será definida por um sorteio aleatório, com 50% de chance de iniciativa para cada Pokésal.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+3. Cálculos de Dano e Efeitos de Status
+
+Problema:
+Ausência de valores exatos para o status (paralisia) e de uma fórmula clara de dano envolvendo ATK e DEF.
+Decisão da Equipe:
+A paralisia atuará diretamente cortando o atributo SPD do Pokésal afetado pela metade.
+A fórmula de dano base calcula o ATK do atacante subtraído de 50% da DEF do oponente (Dano = ATK - (DEF * 0.5)). O resultado bruto é então multiplicado pela vantagem/desvantagem elemental.
+Se o cálculo final resultar num valor negativo, o dano será forçado a 0 para evitar curar o oponente.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+4. Regras dos Itens e da Mochila
+
+Problema: 
+Faltava definir o limite de inventário, a prioridade da ação de cura no turno e a perda de turno.
+Decisão da Equipe: 
+A mochila possui inventário "infinito" de itens; porém, há uma trava de segurança limitando o uso a apenas 2 itens por batalha. A ação de usar um item tem prioridade máxima (ocorre antes de qualquer ataque de Pokésal no turno), e o treinador que o utilizar perde o direito de atacar com o seu Pokésal nessa rodada.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+5. Fluxo e Modo de Jogo
+
+Problema: 
+O texto não deixava claro quem era o oponente da batalha.
+Decisão da Equipe:
+A aplicação será implementada no modo PvE (jogador contra máquina), no qual o jogador batalhará contra um oponente controlado pelo próprio sistema.
