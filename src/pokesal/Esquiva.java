@@ -10,6 +10,8 @@ public class Esquiva {
 
     /**
      * Retorna true se o defensor desviou do golpe (dano anulado).
+     * @param defensor O Pokesal alvo do ataque.
+     * @return true se desviou do golpe.
      */
     public static boolean verificarEsquiva(Pokesal defensor) {
         return Math.random() < CHANCE_ESQUIVA;

@@ -1,5 +1,8 @@
 package pokesal;
 
+/**
+ * Item que recupera uma pequena quantidade de HP do Pokesal.
+ */
 public class Potion implements ItemBatalha {
     private static final int CURA = 20;
 

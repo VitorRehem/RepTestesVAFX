@@ -9,8 +9,16 @@ public class Batalha {
     private static final double CHANCE_FUGA   = 0.30;  // 30% de chance se mais lento
     private static final double CHANCE_CRITICO = 0.10;  // 10% de chance de critico
     private static final double MULT_CRITICO   = 2.0;   // Dano x2 no critico
+    private static final double MULTIPLICADOR_DEFESA = 0.5;
+    private static final double BONUS_DANO_POCA_CHUVA = 0.10;
+    private static final double MULTIPLICADOR_FOGO_ASFALTO = 1.15;
+    private static final double CURA_TERRENO_PLANTA = 0.05;
+    private static final double DANO_STATUS_QUEIMADURA = 0.0625;
+    private static final double DANO_STATUS_VENENO = 0.08;
 
-    // Tipos de acao que um jogador pode escolher
+    /**
+     * Tipos de acao que um jogador pode escolher.
+     */
     public enum TipoAcao { ATACAR, USAR_ITEM, FUGIR }
 
     /**
@@ -21,12 +29,22 @@ public class Batalha {
         private ItemBatalha item;
         private Pokesal alvoDoItem;
 
+        /**
+         * Cria uma acao do tipo atacar.
+         * @return Acao configurada.
+         */
         public static Acao atacar() {
             Acao a = new Acao();
             a.tipo = TipoAcao.ATACAR;
             return a;
         }
 
+        /**
+         * Cria uma acao do tipo usar item.
+         * @param item O item a ser usado.
+         * @param alvo O alvo do item.
+         * @return Acao configurada.
+         */
         public static Acao usarItem(ItemBatalha item, Pokesal alvo) {
             Acao a = new Acao();
             a.tipo = TipoAcao.USAR_ITEM;
@@ -35,12 +53,20 @@ public class Batalha {
             return a;
         }
 
+        /**
+         * Cria uma acao do tipo fugir.
+         * @return Acao configurada.
+         */
         public static Acao fugir() {
             Acao a = new Acao();
             a.tipo = TipoAcao.FUGIR;
             return a;
         }
 
+        /**
+         * Retorna o tipo de acao escolhida.
+         * @return TipoAcao O tipo da acao.
+         */
         public TipoAcao getTipo() { return tipo; }
     }
 
@@ -49,6 +75,12 @@ public class Batalha {
     private Terreno terreno;
     private boolean batalhaEncerrada = false;
 
+    /**
+     * Construtor da batalha.
+     * @param treinador1 Primeiro competidor.
+     * @param treinador2 Segundo competidor.
+     * @param terreno O ambiente onde a batalha ocorre.
+     */
     public Batalha(Treinador treinador1, Treinador treinador2, Terreno terreno) {
         this.treinador1 = treinador1;
         this.treinador2 = treinador2;
@@ -161,7 +193,7 @@ public class Batalha {
                 precisaoGarantida = true;
                 System.out.println("A Poca de Chuva concedeu precisao garantida a " + atacante.getNome() + "!");
             } else {
-                bonusDanoTerreno = 0.10;
+                bonusDanoTerreno = BONUS_DANO_POCA_CHUVA;
                 System.out.println("A Poca de Chuva concedeu +10% de dano a " + atacante.getNome() + "!");
             }
         }
@@ -192,7 +224,7 @@ public class Batalha {
      * Inclui bonus de terreno e chance de acerto critico.
      */
     private int calcularDano(Pokesal atacante, Pokesal defensor, double bonusDanoTerreno) {
-        double danoBase = atacante.getAtk() - (defensor.getDef() * 0.5);
+        double danoBase = atacante.getAtk() - (defensor.getDef() * MULTIPLICADOR_DEFESA);
         if (danoBase < 0) danoBase = 0;
 
         double multiplicadorTipo = atacante.getTipo().calcularVantagem(defensor.getTipo());
@@ -200,7 +232,7 @@ public class Batalha {
 
         // Bonus do terreno Asfalto Quente para tipo Fogo (+15%)
         if (terreno == Terreno.ASFALTO_QUENTE && atacante.getTipo() == TipoElemental.FOGO) {
-            dano *= 1.15;
+            dano *= MULTIPLICADOR_FOGO_ASFALTO;
         }
 
         // Bonus da Poca de Chuva (se sorteado)
@@ -225,21 +257,21 @@ public class Batalha {
 
         // Canteiro Central: tipo Planta recupera 5% do HP maximo
         if (terreno == Terreno.CANTEIRO_CENTRAL && p.getTipo() == TipoElemental.PLANTA) {
-            int cura = (int) Math.round(p.getHpMaximo() * 0.05);
+            int cura = (int) Math.round(p.getHpMaximo() * CURA_TERRENO_PLANTA);
             p.curar(cura);
             System.out.println(p.getNome() + " recuperou " + cura + " de HP gracas ao Canteiro Central.");
         }
 
         switch (p.getStatus()) {
             case QUEIMADO:
-                int danoQueimadura = (int) Math.round(p.getHpMaximo() * 0.0625);
+                int danoQueimadura = (int) Math.round(p.getHpMaximo() * DANO_STATUS_QUEIMADURA);
                 p.receberDano(danoQueimadura);
                 p.setAtk(Math.max(1, p.getAtk() - 1));
                 System.out.println(p.getNome() + " sofreu " + danoQueimadura + " de dano por queimadura.");
                 break;
 
             case ENVENENADO:
-                int danoVeneno = (int) Math.round(p.getHpMaximo() * 0.08);
+                int danoVeneno = (int) Math.round(p.getHpMaximo() * DANO_STATUS_VENENO);
                 p.receberDano(danoVeneno);
                 System.out.println(p.getNome() + " sofreu " + danoVeneno + " de dano por veneno.");
                 break;
@@ -259,6 +291,16 @@ public class Batalha {
     }
 
     // Getters
+
+    /**
+     * Retorna o terreno atual.
+     * @return O terreno da batalha.
+     */
     public Terreno getTerreno()          { return terreno; }
+
+    /**
+     * Retorna o estado da batalha.
+     * @return true se a batalha acabou.
+     */
     public boolean isBatalhaEncerrada()  { return batalhaEncerrada; }
 }

@@ -1,5 +1,8 @@
 package pokesal;
 
+/**
+ * Item que cura o status de envenenamento de um Pokesal.
+ */
 public class Antidoto implements ItemBatalha {
 
     @Override

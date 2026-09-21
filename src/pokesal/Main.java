@@ -11,6 +11,10 @@ public class Main {
 
     private static Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Ponto de entrada principal do jogo PvP.
+     * @param args Argumentos de linha de comando.
+     */
     public static void main(String[] args) {
         System.out.println("========================================");
         System.out.println("       Bem-vindo ao PokeSal - PvP");
