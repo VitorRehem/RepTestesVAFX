@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pokesal.PokeSalServiceTest" time="0.18" tests="35" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\User\Downloads\ReptestesVAFX\RepTestesVAFX\target\test-classes;C:\Users\User\Downloads\ReptestesVAFX\RepTestesVAFX\target\classes;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\User\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\User\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="GMT-03:00"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="BR"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21.0.10\bin"/>
+    <property name="sun.java.command" value="C:\Users\User\AppData\Local\Temp\surefire7455344853354835454\surefirebooter-20260926221523614_3.jar C:\Users\User\AppData\Local\Temp\surefire7455344853354835454 2026-09-26T22-15-02_352-jvmRun1 surefire-20260926221523614_1tmp surefire_0-20260926221523614_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\User\Downloads\ReptestesVAFX\RepTestesVAFX\target\test-classes;C:\Users\User\Downloads\ReptestesVAFX\RepTestesVAFX\target\classes;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\User\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\User\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\User\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\User\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\User"/>
+    <property name="user.language" value="pt"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-01-20"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-21.0.10"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\User\Downloads\ReptestesVAFX\RepTestesVAFX"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\User\AppData\Local\Temp\surefire7455344853354835454\surefirebooter-20260926221523614_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.10+8-LTS-217"/>
+    <property name="user.name" value="User"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\User\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\User\AppData\Local\Temp\"/>
+    <property name="java.version" value="21.0.10"/>
+    <property name="user.dir" value="C:\Users\User\Downloads\ReptestesVAFX\RepTestesVAFX"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-21.0.10\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Users/User/.gemini/antigravity-ide/bin;C:\Python314\Scripts\;C:\Python314\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\Java\apache-maven-3.9.11\bin\bin;C:\Program Files\Java\apache-maven-3.9.11\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\bin;%JAVA_HOME%\bin;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\User\AppData\Local\Programs\Python\Launcher\;C:\Users\User\AppData\Local\Microsoft\WindowsApps;D:\Downloads\Microsoft VS Code\bin;C:\Program Files\Java\apache-maven-3.9.11\bin;C:\Users\User\AppData\Local\GitHubDesktop\bin;D:\Documents\InteliJ\IntelliJ IDEA 2026.1\bin;C:\Users\User\AppData\Local\Programs\Antigravity\bin;C:\Users\User\AppData\Roaming\npm;C:\Users\User\AppData\Local\Programs\Antigravity IDE\bin;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="21.0.10+8-LTS-217"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="testCalculoDanoBoundaryValues_CuraNaoExcedeHpMaximo" classname="pokesal.PokeSalServiceTest" time="0.042"/>
+  <testcase name="testCalculoDanoBoundaryValues_AtkIgualDef" classname="pokesal.PokeSalServiceTest" time="0.005"/>
+  <testcase name="testSelecaoInicialIndiceInvalido" classname="pokesal.PokeSalServiceTest" time="0.012"/>
+  <testcase name="testTodosInicialTemMesmoHp" classname="pokesal.PokeSalServiceTest" time="0.003"/>
+  <testcase name="testVantagemElemental_DanoAplicadoComMultiplicador" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testVantagemElemental_PlantaContraAgua" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testVantagemElemental_PlantaContraFogo" classname="pokesal.PokeSalServiceTest" time="0.002"/>
+  <testcase name="testEfeitoTerrenoEstacionamentoUCSal_CanteiroCentral" classname="pokesal.PokeSalServiceTest" time="0.002"/>
+  <testcase name="testUsoLimiteDeItensExcedido_UsarDoisItens" classname="pokesal.PokeSalServiceTest" time="0.005">
+    <system-out><![CDATA[CharSal recuperou 20 de HP usando Potion.
+CharSal recuperou 50 de HP usando Super Potion.
+]]></system-out>
+  </testcase>
+  <testcase name="testSelecaoInicialCriaInstanciaCorreta" classname="pokesal.PokeSalServiceTest" time="0.003"/>
+  <testcase name="testVantagemElemental_FogoContraAgua" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testPokesalRecemCriado" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testAtributosDosPokesalIniciais" classname="pokesal.PokeSalServiceTest" time="0.002"/>
+  <testcase name="testOrdemDeAtaquePorVelocidade_ParalisadoPerdePrioridade" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testCalculoDanoBoundaryValues_HpUm" classname="pokesal.PokeSalServiceTest" time="0.002"/>
+  <testcase name="testEfeitoTerrenoEstacionamentoUCSal_AsfaltoQuente" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testOrdemDeAtaquePorVelocidade_MaiorSpdAtacaPrimeiro" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testUsoLimiteDeItensExcedido_TerceiroItemNegado" classname="pokesal.PokeSalServiceTest" time="0.002">
+    <system-out><![CDATA[CharSal recuperou 20 de HP usando Potion.
+CharSal recuperou 50 de HP usando Super Potion.
+Jogador 1 ja usou o maximo de 2 itens nesta batalha!
+]]></system-out>
+  </testcase>
+  <testcase name="testAntidotoCuraVeneno" classname="pokesal.PokeSalServiceTest" time="0.003">
+    <system-out><![CDATA[BulbaSal foi curado do veneno!
+]]></system-out>
+  </testcase>
+  <testcase name="testAntidotoSemEfeitoSeNaoEnvenenado" classname="pokesal.PokeSalServiceTest" time="0.001">
+    <system-out><![CDATA[Antidoto não teve efeito em CharSal (não está envenenado).
+]]></system-out>
+  </testcase>
+  <testcase name="testVantagemElemental_AguaContraFogo" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testCalculoDanoBoundaryValues_DefMaiorQueAtk" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testEfeitoTerrenoEstacionamentoUCSal_PocaDeChuva" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testVantagemElemental_FogoContraPlanta" classname="pokesal.PokeSalServiceTest" time="0.0"/>
+  <testcase name="testPokesalMorto" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testOrdemDeAtaquePorVelocidade_ParalisadoReduzSpd" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testCalculoDanoBoundaryValues_HpNaoFicaNegativo" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testPotionCura20Hp" classname="pokesal.PokeSalServiceTest" time="0.001">
+    <system-out><![CDATA[CharSal recuperou 20 de HP usando Potion.
+]]></system-out>
+  </testcase>
+  <testcase name="testEfeitoStatusQueimadura" classname="pokesal.PokeSalServiceTest" time="0.004"/>
+  <testcase name="testVantagemElemental_AguaContraPlanta" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testUsoLimiteDeItensExcedido_ItemForaDaMochila" classname="pokesal.PokeSalServiceTest" time="0.003">
+    <system-out><![CDATA[O item Potion nao esta na mochila de Jogador 1.
+]]></system-out>
+  </testcase>
+  <testcase name="testEfeitoStatusVeneno" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testSuperPotionCura50Hp" classname="pokesal.PokeSalServiceTest" time="0.001">
+    <system-out><![CDATA[CharSal recuperou 50 de HP usando Super Potion.
+]]></system-out>
+  </testcase>
+  <testcase name="testEfeitoTerrenoEstacionamentoUCSal_Normal" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+  <testcase name="testVantagemElemental_MesmoTipo" classname="pokesal.PokeSalServiceTest" time="0.001"/>
+</testsuite>
