@@ -63,15 +63,16 @@ public class Treinador {
 
     /**
      * Usa um item da mochila no alvo.
-     * Retorna false se o limite foi atingido ou o item nao esta disponivel.
+     * Lanca IllegalStateException se o limite de itens foi atingido.
+     * Retorna false se o item nao esta na mochila.
      * @param item O item a ser usado.
      * @param alvo O Pokesal que recebera o efeito do item.
      * @return true se o uso foi bem-sucedido.
+     * @throws IllegalStateException se o limite de itens por batalha foi excedido.
      */
     public boolean usarItem(ItemBatalha item, Pokesal alvo) {
         if (!podeUsarItem()) {
-            System.out.println(nome + " ja usou o maximo de " + LIMITE_ITENS_POR_BATALHA + " itens nesta batalha!");
-            return false;
+            throw new IllegalStateException(nome + " ja usou o maximo de " + LIMITE_ITENS_POR_BATALHA + " itens nesta batalha!");
         }
         if (!mochila.contains(item)) {
             System.out.println("O item " + item.getNome() + " nao esta na mochila de " + nome + ".");

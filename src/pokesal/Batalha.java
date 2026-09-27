@@ -113,10 +113,18 @@ public class Batalha {
 
         // 2. Itens sao resolvidos antes dos ataques
         if (acao1.getTipo() == TipoAcao.USAR_ITEM) {
-            treinador1.usarItem(acao1.item, acao1.alvoDoItem);
+            try {
+                treinador1.usarItem(acao1.item, acao1.alvoDoItem);
+            } catch (IllegalStateException e) {
+                System.out.println(e.getMessage());
+            }
         }
         if (acao2.getTipo() == TipoAcao.USAR_ITEM) {
-            treinador2.usarItem(acao2.item, acao2.alvoDoItem);
+            try {
+                treinador2.usarItem(acao2.item, acao2.alvoDoItem);
+            } catch (IllegalStateException e) {
+                System.out.println(e.getMessage());
+            }
         }
 
         // 3. Ataques na ordem do SPD

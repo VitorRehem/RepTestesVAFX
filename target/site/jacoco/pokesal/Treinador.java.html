@@ -63,37 +63,38 @@ public class Treinador {
 
     /**
      * Usa um item da mochila no alvo.
-     * Retorna false se o limite foi atingido ou o item nao esta disponivel.
+     * Lanca IllegalStateException se o limite de itens foi atingido.
+     * Retorna false se o item nao esta na mochila.
      * @param item O item a ser usado.
      * @param alvo O Pokesal que recebera o efeito do item.
      * @return true se o uso foi bem-sucedido.
+     * @throws IllegalStateException se o limite de itens por batalha foi excedido.
      */
     public boolean usarItem(ItemBatalha item, Pokesal alvo) {
-<span class="fc bfc" id="L72" title="All 2 branches covered.">        if (!podeUsarItem()) {</span>
-<span class="fc" id="L73">            System.out.println(nome + &quot; ja usou o maximo de &quot; + LIMITE_ITENS_POR_BATALHA + &quot; itens nesta batalha!&quot;);</span>
-<span class="fc" id="L74">            return false;</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (!podeUsarItem()) {</span>
+<span class="fc" id="L75">            throw new IllegalStateException(nome + &quot; ja usou o maximo de &quot; + LIMITE_ITENS_POR_BATALHA + &quot; itens nesta batalha!&quot;);</span>
         }
-<span class="fc bfc" id="L76" title="All 2 branches covered.">        if (!mochila.contains(item)) {</span>
-<span class="fc" id="L77">            System.out.println(&quot;O item &quot; + item.getNome() + &quot; nao esta na mochila de &quot; + nome + &quot;.&quot;);</span>
-<span class="fc" id="L78">            return false;</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        if (!mochila.contains(item)) {</span>
+<span class="fc" id="L78">            System.out.println(&quot;O item &quot; + item.getNome() + &quot; nao esta na mochila de &quot; + nome + &quot;.&quot;);</span>
+<span class="fc" id="L79">            return false;</span>
         }
-<span class="fc" id="L80">        item.usar(alvo);</span>
-<span class="fc" id="L81">        mochila.remove(item);</span>
-<span class="fc" id="L82">        itensUsados++;</span>
-<span class="fc" id="L83">        return true;</span>
+<span class="fc" id="L81">        item.usar(alvo);</span>
+<span class="fc" id="L82">        mochila.remove(item);</span>
+<span class="fc" id="L83">        itensUsados++;</span>
+<span class="fc" id="L84">        return true;</span>
     }
 
     // Getters e Setters
     /** @return O nome do treinador. */
-<span class="nc" id="L88">    public String getNome()         { return nome; }</span>
+<span class="nc" id="L89">    public String getNome()         { return nome; }</span>
     /** @return O Pokesal ativo no momento. */
-<span class="nc" id="L90">    public Pokesal getAtivo()       { return ativo; }</span>
+<span class="nc" id="L91">    public Pokesal getAtivo()       { return ativo; }</span>
     /** @return A equipe completa do treinador. */
-<span class="nc" id="L92">    public List&lt;Pokesal&gt; getEquipe(){ return equipe; }</span>
+<span class="nc" id="L93">    public List&lt;Pokesal&gt; getEquipe(){ return equipe; }</span>
     /** @return A quantidade de itens ja usados nesta batalha. */
-<span class="fc" id="L94">    public int getItensUsados()     { return itensUsados; }</span>
+<span class="fc" id="L95">    public int getItensUsados()     { return itensUsados; }</span>
 
     /** @param ativo Define o novo Pokesal ativo. */
-<span class="nc" id="L97">    public void setAtivo(Pokesal ativo) { this.ativo = ativo; }</span>
+<span class="nc" id="L98">    public void setAtivo(Pokesal ativo) { this.ativo = ativo; }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

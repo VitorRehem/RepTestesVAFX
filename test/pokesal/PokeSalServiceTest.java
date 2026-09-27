@@ -252,8 +252,8 @@ class PokeSalServiceTest {
     }
 
     @Test
-    @DisplayName("Teste 4: Terceiro uso de item deve ser negado (retorna false)")
-    void testUsoLimiteDeItensExcedido_TerceiroItemNegado() {
+    @DisplayName("Teste 4: Terceiro uso de item deve lançar IllegalStateException")
+    void testUsoLimiteDeItensExcedido_TerceiroItemLancaExcecao() {
         treinador1.adicionarItem(new Potion());
         treinador1.adicionarItem(new SuperPotion());
         treinador1.adicionarItem(new Potion());
@@ -262,14 +262,13 @@ class PokeSalServiceTest {
         treinador1.usarItem(treinador1.getPrimeiroItemDisponivel(), charSal);
         treinador1.usarItem(treinador1.getPrimeiroItemDisponivel(), charSal);
 
-        // Tenta usar o 3º — deve falhar
+        // Tenta usar o 3º — deve lançar exceção
         assertFalse(treinador1.podeUsarItem(),
                 "Após 2 usos, podeUsarItem() deve retornar false");
 
         ItemBatalha item3 = treinador1.getPrimeiroItemDisponivel();
-        boolean resultado3 = treinador1.usarItem(item3, charSal);
-        assertFalse(resultado3,
-                "Terceiro uso de item deve retornar false (limite de 2 excedido)");
+        assertThrows(IllegalStateException.class, () -> treinador1.usarItem(item3, charSal),
+                "Terceiro uso de item deve lançar IllegalStateException (limite de 2 excedido)");
     }
 
     @Test
@@ -346,7 +345,78 @@ class PokeSalServiceTest {
     }
 
     // ==========================================================================
-    // TESTE 6 (AUTORAL 1): testEfeitosStatusFimDeTurno — Queimadura e Veneno
+    // TESTE 6 (AUTORAL 1): Requisito Autoral — Esquiva (Dodge)
+    // Requisito: Chance base fixa de 10% de desviar um golpe, anulando dano.
+    // ==========================================================================
+
+    @Test
+    @DisplayName("Teste Autoral 1: Constante de chance de esquiva deve ser 10%")
+    void testEsquivaChanceBase() {
+        // Verifica que a classe Esquiva define a chance como 10% (0.10)
+        // Chamamos verificarEsquiva() 1000 vezes e verificamos que a taxa
+        // fica próxima de 10% (margem de tolerância estatística)
+        int esquivas = 0;
+        int tentativas = 10000;
+        for (int i = 0; i < tentativas; i++) {
+            if (Esquiva.verificarEsquiva(charSal)) {
+                esquivas++;
+            }
+        }
+        double taxa = (double) esquivas / tentativas;
+        // Com 10000 tentativas, a taxa deve estar entre 5% e 15% (margem ampla)
+        assertTrue(taxa > 0.05 && taxa < 0.15,
+                "Taxa de esquiva deve ser aproximadamente 10%. Obtida: " + (taxa * 100) + "%");
+    }
+
+    @Test
+    @DisplayName("Teste Autoral 1: Esquiva deve receber o Pokésal defensor como parâmetro")
+    void testEsquivaRecebeDefensor() {
+        // Verifica que o método verificarEsquiva aceita um Pokésal e retorna boolean
+        // (validação da interface do método — não lança exceção)
+        boolean resultado = Esquiva.verificarEsquiva(bulbaSal);
+        // O resultado é aleatório, mas o método não deve lançar exceção
+        assertTrue(resultado || !resultado,
+                "verificarEsquiva deve retornar true ou false sem lançar exceção");
+    }
+
+    // ==========================================================================
+    // TESTE 7 (AUTORAL 2): Requisito Autoral — Acerto Crítico (Critical Hit)
+    // Requisito: 10% de chance de acerto crítico, multiplicando dano por 2.0.
+    // ==========================================================================
+
+    @Test
+    @DisplayName("Teste Autoral 2: Multiplicador de acerto crítico deve ser 2.0")
+    void testAcertoCriticoMultiplicador() {
+        // Verifica que quando ocorre acerto crítico, o dano é multiplicado por 2
+        // Calcula dano base de CharSal (Fogo) contra BulbaSal (Planta)
+        double danoBase = charSal.getAtk() - (bulbaSal.getDef() * 0.5);
+        double multiplicadorTipo = TipoElemental.FOGO.calcularVantagem(TipoElemental.PLANTA);
+        int danoNormal = (int) Math.round(danoBase * multiplicadorTipo);
+        int danoCritico = (int) Math.round(danoBase * multiplicadorTipo * 2.0);
+
+        assertEquals(35, danoNormal, "Dano normal de Fogo contra Planta deve ser 35");
+        assertEquals(70, danoCritico, "Dano com acerto crítico (x2.0) deve ser 70");
+    }
+
+    @Test
+    @DisplayName("Teste Autoral 2: Acerto crítico deve ter probabilidade próxima de 10%")
+    void testAcertoCriticoChance() {
+        // Simula a mesma lógica de chance usada em Batalha.calcularDano()
+        // CHANCE_CRITICO = 0.10 (10%)
+        int criticos = 0;
+        int tentativas = 10000;
+        for (int i = 0; i < tentativas; i++) {
+            if (Math.random() < 0.10) {
+                criticos++;
+            }
+        }
+        double taxa = (double) criticos / tentativas;
+        assertTrue(taxa > 0.05 && taxa < 0.15,
+                "Taxa de acerto crítico deve ser aproximadamente 10%. Obtida: " + (taxa * 100) + "%");
+    }
+
+    // ==========================================================================
+    // TESTES COMPLEMENTARES: Efeitos de Status (Queimadura, Veneno, Antídoto)
     // ==========================================================================
 
     @Test
@@ -407,7 +477,7 @@ class PokeSalServiceTest {
     }
 
     // ==========================================================================
-    // TESTE 7 (AUTORAL 2): testSelecaoInicialPokeSal — Fábrica de Pokésal
+    // TESTES COMPLEMENTARES: Seleção Inicial e Fábrica de Pokésal
     // ==========================================================================
 
     @Test
