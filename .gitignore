@@ -1,0 +1,22 @@
+# Compilados Java
+*.class
+*.jar
+*.war
+
+# Maven
+target/
+
+# Compilados Eclipse/VSCode
+bin/
+
+# IDE
+.settings/
+.project
+.classpath
+.vscode/
+*.iml
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
